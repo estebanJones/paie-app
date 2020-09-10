@@ -65,4 +65,12 @@ public class RemunerationEmploye extends BaseEntite{
 		this.grade = grade;
 	}
 
+
+	@Override
+	public String toString() {
+		return "RemunerationEmploye [matricule=" + matricule + ", entreprise=" + entreprise + ", profilRemuneration="
+				+ profilRemuneration + ", grade=" + grade + ", bulletins=" + bulletins + "]";
+	}
+	
+	
 }

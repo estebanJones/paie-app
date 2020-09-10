@@ -1,6 +1,6 @@
 package dev.paie.controller;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,25 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.paie.dto.EmployeDto;
 import dev.paie.entite.Employe;
 import dev.paie.service.EmployeService;
-import dev.paie.utils.LinkService;
-
-import javax.validation.Valid;
+import dev.paie.utils.logger.LoggerUtils;
 
 
 @RestController
-@RequestMapping("/paie-app")
+@RequestMapping("/paieapp")
 public class EmployeController {
 	@Autowired
 	EmployeService employeService;
 	
-	@PostMapping("/insert-employe")
+	@PostMapping("/insertemploye")
 	public ResponseEntity<?> insert(@RequestBody @Valid EmployeDto employeDto, BindingResult resValid) {
 		if(!resValid.hasErrors()) {
 			Employe employe = this.employeService.creerEmploye(employeDto.getMatricule(), 
 															   employeDto.getIdProfil(), 
 															   employeDto.getIdEntreprise(), 
 															   employeDto.getIdGrade());
-			
+			System.out.println("EEEE " + employe);
 			return ResponseEntity.ok(employe);
 		} else {
 			

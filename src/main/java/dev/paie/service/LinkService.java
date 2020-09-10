@@ -1,16 +1,15 @@
-package dev.paie.utils;
+package dev.paie.service;
 
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.ProfilRemuneration;
-import dev.paie.service.EntrepriseService;
-import dev.paie.service.GradeService;
-import dev.paie.service.ProfilRemunerationService;
 
+@Service
 public class LinkService {
 	@Autowired
 	EntrepriseService entrepriseService;
