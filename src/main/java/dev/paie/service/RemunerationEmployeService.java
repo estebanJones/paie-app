@@ -13,6 +13,9 @@ import dev.paie.utils.LinkService;
 public class RemunerationEmployeService {
 	@Autowired
 	LinkService link;
+	
+	
+	
 	public RemunerationEmploye creerRemunerationEmploye(Integer idEntreprise, Integer idProfil, Integer idGrade) {
 		RemunerationEmploye remunerationEmploye = null;
 		

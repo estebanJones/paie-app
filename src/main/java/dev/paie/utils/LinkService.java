@@ -4,19 +4,18 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import dev.paie.dto.EntrepriseDto;
 import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
 import dev.paie.entite.ProfilRemuneration;
 import dev.paie.service.EntrepriseService;
 import dev.paie.service.GradeService;
-import dev.paie.service.ProfilService;
+import dev.paie.service.ProfilRemunerationService;
 
 public class LinkService {
 	@Autowired
 	EntrepriseService entrepriseService;
 	@Autowired
-	ProfilService profilService;
+	ProfilRemunerationService profilService;
 	@Autowired
 	GradeService gradeService;
 	

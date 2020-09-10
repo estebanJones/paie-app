@@ -3,13 +3,13 @@ package dev.paie.service;
 import java.util.Optional;
 
 import dev.paie.entite.ProfilRemuneration;
-import dev.paie.repository.ProfilRepository;
+import dev.paie.repository.ProfilRemunerationRepository;
 
-public class ProfilService {
-	private ProfilRepository profilRepository;
+public class ProfilRemunerationService {
+	private ProfilRemunerationRepository profilRepository;
 	
 	
-	public ProfilService(ProfilRepository profilRepository) {
+	public ProfilRemunerationService(ProfilRemunerationRepository profilRepository) {
 		this.profilRepository = profilRepository;
 	}
 

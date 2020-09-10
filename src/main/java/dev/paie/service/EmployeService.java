@@ -19,11 +19,9 @@ public class EmployeService {
 		@Autowired
 		RemunerationEmployeService remunerationEmployeService;
 		
-	public Employe insert(String matricule, Integer idEntreprise, Integer idProfil, Integer idGrade) {
+	public Employe creerEmploye(String matricule, Integer idEntreprise, Integer idProfil, Integer idGrade) {
 		RemunerationEmploye remuneration = this.remunerationEmployeService.creerRemunerationEmploye(idEntreprise, idProfil, idGrade);
-		Employe e = new Employe(remuneration);
-		
-		return this.employeRepository.save(e);
+		return new Employe(remuneration);
 	}
 	
 	
