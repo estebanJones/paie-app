@@ -1,9 +1,10 @@
 package dev.paie.entite;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -11,9 +12,18 @@ import javax.persistence.Table;
 public class RemunerationEmploye extends BaseEntite{
 
 	private String matricule;
+	
+	@OneToOne
 	private Entreprise entreprise;
+	
+	@OneToOne
 	private ProfilRemuneration profilRemuneration;
+	
+	@OneToOne
 	private Grade grade;
+	
+	@OneToMany(mappedBy = "remunerationEmploye")
+	Set<BulletinSalaire> bulletins;
 	
 	public RemunerationEmploye() {
 	}

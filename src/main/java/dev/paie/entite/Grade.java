@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="grade")
 public class Grade extends BaseEntite{
-
 	private String code;
 	private BigDecimal nbHeuresBase;
 	private BigDecimal tauxBase;

@@ -18,8 +18,9 @@ public class Cotisation extends BaseEntite{
 	private BigDecimal tauxSalarial;
 	private BigDecimal tauxPatronal;
 	private Boolean imposable = false;
+	
 	@ManyToMany
-	@JoinTable(name="profil_remuneration_cotisations", joinColumns = @JoinColumn(name="cotisation_id", referencedColumnName = "id"),
+	@JoinTable(name="profil_remuneration_cotisations", joinColumns = @JoinColumn(name="cotisations_id", referencedColumnName = "id"),
 														inverseJoinColumns = @JoinColumn(name="profil_remuneration_id", referencedColumnName = "id"))
 	private List<ProfilRemuneration> profilRemunerations;
 	
@@ -58,4 +59,14 @@ public class Cotisation extends BaseEntite{
 	public void setImposable(Boolean imposable) {
 		this.imposable = imposable;
 	}
+
+	public List<ProfilRemuneration> getProfilRemunerations() {
+		return profilRemunerations;
+	}
+
+	public void setProfilRemunerations(List<ProfilRemuneration> profilRemunerations) {
+		this.profilRemunerations = profilRemunerations;
+	}
+	
+	
 }

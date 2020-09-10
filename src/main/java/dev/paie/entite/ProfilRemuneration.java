@@ -18,11 +18,18 @@ public class ProfilRemuneration extends BaseEntite{
 	@JoinTable(name="profil_remuneration_cotisations", joinColumns = @JoinColumn(name="profil_remuneration_id", referencedColumnName = "id"),
 														inverseJoinColumns = @JoinColumn(name="cotisations_id", referencedColumnName = "id"))
 	private List<Cotisation> cotisations;
-
+	
+	@ManyToMany
+	@JoinTable(name="profil_remuneration_cotisations", joinColumns = @JoinColumn(name="profil_remuneration_id", referencedColumnName = "id"),
+														inverseJoinColumns = @JoinColumn(name="avantages_id", referencedColumnName = "id"))
 	private List<Avantage> avantages;
 	
 	public ProfilRemuneration() {
 
+	}
+	
+	public ProfilRemuneration(String code) {
+		this.code = code;
 	}
 	
 	public String getCode() {
