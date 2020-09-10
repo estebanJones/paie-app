@@ -16,11 +16,11 @@ import dev.paie.repository.EmployeRepository;
 public class EmployeService {
 		@Autowired
 		EmployeRepository employeRepository;
-	
+		@Autowired
+		RemunerationEmployeService remunerationEmployeService;
 		
-	public Employe insert(String matricule, Entreprise entreprise, ProfilRemuneration profil, Grade grade) {
-		RemunerationEmploye remuneration = new RemunerationEmploye(entreprise, profil, grade);
-		remuneration.setMatricule(matricule);
+	public Employe insert(String matricule, Integer idEntreprise, Integer idProfil, Integer idGrade) {
+		RemunerationEmploye remuneration = this.remunerationEmployeService.creerRemunerationEmploye(idEntreprise, idProfil, idGrade);
 		Employe e = new Employe(remuneration);
 		
 		return this.employeRepository.save(e);

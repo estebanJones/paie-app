@@ -1,11 +1,13 @@
 package dev.paie.dto;
 
+import dev.paie.entite.Entreprise;
+
 public class EntrepriseDto {
 	private String denomination;
 
-	public EntrepriseDto(String denomination) {
+	public EntrepriseDto(Entreprise e) {
 		super();
-		this.denomination = denomination;
+		this.denomination = e.getDenomination();
 	}
 
 	public String getDenomination() {

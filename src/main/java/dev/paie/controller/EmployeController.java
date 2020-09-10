@@ -22,8 +22,6 @@ public class EmployeController {
 	
 	@PostMapping("/insert-employe")
 	public void insert(@RequestBody Employe e, HttpServletResponse response) {
-		//this.linkService.joinEntrepriseToRemuneration(idEntreprise);
-		//this.linkService
-		//this.employeService.insert(matricule, entreprise, profil, grade);
+
 	}
 }
