@@ -1,6 +1,6 @@
 package dev.paie.service;
 
-import javax.transaction.Transactional;
+import java.util.Optional;
 
 import dev.paie.entite.ProfilRemuneration;
 import dev.paie.repository.ProfilRepository;
@@ -12,9 +12,8 @@ public class ProfilService {
 	public ProfilService(ProfilRepository profilRepository) {
 		this.profilRepository = profilRepository;
 	}
-	
-	@Transactional
-	public void insertMatricule(String code) {
-		this.profilRepository.save(new ProfilRemuneration(code));
+
+	public Optional<ProfilRemuneration> selectProfil(Integer idProfil) {
+		return this.profilRepository.findById(idProfil);
 	}
 }

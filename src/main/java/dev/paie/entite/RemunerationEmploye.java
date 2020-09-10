@@ -7,6 +7,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import dev.paie.entite.base.BaseEntite;
+
 @Entity
 @Table(name = "remuneration_employe")
 public class RemunerationEmploye extends BaseEntite{
@@ -28,6 +30,15 @@ public class RemunerationEmploye extends BaseEntite{
 	public RemunerationEmploye() {
 	}
 	
+	
+	public RemunerationEmploye(Entreprise entreprise, ProfilRemuneration profilRemuneration,
+			Grade grade) {
+		super();
+		this.entreprise = entreprise;
+		this.profilRemuneration = profilRemuneration;
+		this.grade = grade;
+	}
+
 	public String getMatricule() {
 		return matricule;
 	}

@@ -8,6 +8,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import dev.paie.entite.base.BaseEntite;
+
 @Entity
 @Table(name = "profil_remuneration")
 public class ProfilRemuneration extends BaseEntite{

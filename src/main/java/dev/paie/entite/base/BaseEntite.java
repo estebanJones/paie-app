@@ -1,4 +1,4 @@
-package dev.paie.entite;
+package dev.paie.entite.base;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

@@ -1,41 +1,39 @@
-package dev.paie.entite;
+package dev.paie.dto;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import dev.paie.entite.base.BaseEntite;
-
-@Entity
-@Table(name="grade")
-public class Grade extends BaseEntite{
+public class GradeDto {
 	private String code;
 	private BigDecimal nbHeuresBase;
 	private BigDecimal tauxBase;
 	
-	public Grade() {
-		// TODO Auto-generated constructor stub
+	public GradeDto(String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
+		super();
+		this.code = code;
+		this.nbHeuresBase = nbHeuresBase;
+		this.tauxBase = tauxBase;
 	}
-	
+
 	public String getCode() {
 		return code;
 	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}
+
 	public BigDecimal getNbHeuresBase() {
 		return nbHeuresBase;
 	}
+
 	public void setNbHeuresBase(BigDecimal nbHeuresBase) {
 		this.nbHeuresBase = nbHeuresBase;
 	}
+
 	public BigDecimal getTauxBase() {
 		return tauxBase;
 	}
+
 	public void setTauxBase(BigDecimal tauxBase) {
 		this.tauxBase = tauxBase;
 	}

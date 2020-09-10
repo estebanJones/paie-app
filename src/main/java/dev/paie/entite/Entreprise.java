@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import dev.paie.entite.base.BaseEntite;
+
 @Entity
 @Table(name="entreprise")
 public class Entreprise extends BaseEntite{

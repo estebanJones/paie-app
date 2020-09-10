@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import dev.paie.entite.base.BaseEntite;
+
 @Entity
 @Table(name="employe")
 public class Employe extends BaseEntite  {
@@ -13,6 +15,13 @@ public class Employe extends BaseEntite  {
 	public Employe() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public Employe(RemunerationEmploye remunerationEmploye) {
+		super();
+		this.remunerationEmploye = remunerationEmploye;
+	}
+
 
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;

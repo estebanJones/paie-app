@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import dev.paie.entite.base.BaseEntite;
+
 @Entity
 @Table(name="bulletin_salaire")
 public class BulletinSalaire extends BaseEntite {
