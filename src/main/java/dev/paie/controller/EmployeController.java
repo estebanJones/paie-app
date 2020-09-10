@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.paie.dto.EmployeDto;
 import dev.paie.entite.Employe;
 import dev.paie.service.EmployeService;
-import dev.paie.utils.logger.LoggerUtils;
 
 
 @RestController
@@ -29,7 +28,7 @@ public class EmployeController {
 															   employeDto.getIdProfil(), 
 															   employeDto.getIdEntreprise(), 
 															   employeDto.getIdGrade());
-			System.out.println("EEEE " + employe);
+			this.employeService.persistEmploye(employe);
 			return ResponseEntity.ok(employe);
 		} else {
 			
