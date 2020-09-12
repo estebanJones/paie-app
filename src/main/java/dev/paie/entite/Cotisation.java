@@ -69,6 +69,13 @@ public class Cotisation extends BaseEntite{
 	public void setProfilRemunerations(List<ProfilRemuneration> profilRemunerations) {
 		this.profilRemunerations = profilRemunerations;
 	}
+
+	@Override
+	public String toString() {
+		return "Cotisation [code=" + code + ", libelle=" + libelle + ", tauxSalarial=" + tauxSalarial
+				+ ", tauxPatronal=" + tauxPatronal + ", imposable=" + imposable + ", profilRemunerations="
+				+ profilRemunerations + "]";
+	}
 	
 	
 }

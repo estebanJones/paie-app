@@ -28,6 +28,14 @@ public class BulletinSalaire extends BaseEntite {
 	}
 	
 	
+	public BulletinSalaire(Periode periode, RemunerationEmploye remunerationEmploye, BigDecimal primeExceptionnelle) {
+		super();
+		this.periode = periode;
+		this.remunerationEmploye = remunerationEmploye;
+		this.primeExceptionnelle = primeExceptionnelle;
+	}
+
+
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;
 	}

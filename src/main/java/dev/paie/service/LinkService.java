@@ -17,9 +17,6 @@ public class LinkService {
 	ProfilRemunerationService profilService;
 	@Autowired
 	GradeService gradeService;
-	
-	
-	
 
 	public Optional<Entreprise> joinEntrepriseToRemuneration(Integer idEntreprise) {
 		return this.entrepriseService.selectEntreprise(idEntreprise);

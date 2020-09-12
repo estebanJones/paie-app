@@ -24,6 +24,14 @@ public class Periode extends BaseEntite{
 	public Periode() {
 	}
 	
+	
+	public Periode(LocalDate dateDebut, LocalDate dateFin) {
+		super();
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+	}
+
+
 	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
