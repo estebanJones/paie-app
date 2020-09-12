@@ -57,4 +57,12 @@ public class Periode extends BaseEntite{
 	public void setBulletins(Set<BulletinSalaire> bulletins) {
 		this.bulletins = bulletins;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Periode [dateDebut=" + dateDebut + ", dateFin=" + dateFin + "]";
+	}
+	
+	
 }

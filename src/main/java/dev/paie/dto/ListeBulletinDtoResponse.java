@@ -4,20 +4,20 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class FactureDtoResponse {
-	private static final LocalDateTime dateCreation = LocalDateTime.now();
-	private LocalDate dateDebut;
-	private LocalDate dateFin;
+import dev.paie.entite.Periode;
+
+public class ListeBulletinDtoResponse {
+	private final static LocalDateTime dateCreation = LocalDateTime.now();
+	private Periode periode;
 	private String matricule;
 	private BigDecimal salaireBrut;
 	private BigDecimal netImposable;
 	private BigDecimal netAPayer;
 	
-	public FactureDtoResponse(LocalDate dateDebut, LocalDate dateFin, String matricule,
-			BigDecimal salaireBrut, BigDecimal netImposable, BigDecimal netAPayer) {
+	public ListeBulletinDtoResponse(Periode periode, String matricule, BigDecimal salaireBrut,
+			BigDecimal netImposable, BigDecimal netAPayer) {
 		super();
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
+		this.periode = periode;
 		this.matricule = matricule;
 		this.salaireBrut = salaireBrut;
 		this.netImposable = netImposable;
@@ -28,20 +28,12 @@ public class FactureDtoResponse {
 		return dateCreation;
 	}
 
-	public LocalDate getDateDebut() {
-		return dateDebut;
+	public Periode getPeriode() {
+		return periode;
 	}
 
-	public void setDateDebut(LocalDate dateDebut) {
-		this.dateDebut = dateDebut;
-	}
-
-	public LocalDate getDateFin() {
-		return dateFin;
-	}
-
-	public void setDateFin(LocalDate dateFin) {
-		this.dateFin = dateFin;
+	public void setPeriode(Periode periode) {
+		this.periode = periode;
 	}
 
 	public String getMatricule() {
@@ -75,4 +67,12 @@ public class FactureDtoResponse {
 	public void setNetAPayer(BigDecimal netAPayer) {
 		this.netAPayer = netAPayer;
 	}
+
+	@Override
+	public String toString() {
+		return "ListeBulletinDtoResponse [periode=" + periode + ", matricule=" + matricule + ", salaireBrut="
+				+ salaireBrut + ", netImposable=" + netImposable + ", netAPayer=" + netAPayer + "]";
+	}
+	
+	
 }

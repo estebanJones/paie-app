@@ -64,6 +64,13 @@ public class BulletinSalaire extends BaseEntite {
 	public void setPrimeExceptionnelle(BigDecimal primeExceptionnelle) {
 		this.primeExceptionnelle = primeExceptionnelle;
 	}
+
+
+	@Override
+	public String toString() {
+		return "BulletinSalaire [periode=" + periode + ", remunerationEmploye=" + remunerationEmploye
+				+ ", primeExceptionnelle=" + primeExceptionnelle + "]";
+	}
 	
 	
 	

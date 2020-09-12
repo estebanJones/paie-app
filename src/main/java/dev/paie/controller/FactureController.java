@@ -1,6 +1,10 @@
 package dev.paie.controller;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -13,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.paie.dto.FactureDtoRequest;
-import dev.paie.dto.FactureDtoResponse;
+import dev.paie.dto.CreationBulletinDtoRequest;
+import dev.paie.dto.CreationBulletinDtoResponse;
+import dev.paie.dto.ListeBulletinDtoResponse;
+import dev.paie.dto.ListeBulletinsDtoRequest;
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Employe;
 import dev.paie.entite.Periode;
 import dev.paie.entite.RemunerationEmploye;
+import dev.paie.exception.EntiteIntrouvableException;
 import dev.paie.service.BulletinSalaireService;
 import dev.paie.service.EmployeService;
 import dev.paie.service.PeriodeService;
@@ -41,6 +48,30 @@ public class FactureController {
 	private EmployeService employeService;
 	@Autowired
 	BulletinUtils bulletinUtils;
+
+	
+	@PostMapping("/listebulletins")
+	public void listerBulletinSalaire(@RequestBody @Valid ListeBulletinsDtoRequest listBulletinDto, BindingResult resValid) throws EntiteIntrouvableException {
+		if(!resValid.hasErrors()) {
+			List<ListeBulletinDtoResponse> responseListe = new ArrayList<>();
+			List<BulletinSalaire> bulletins = this.bulletinSalaireService.findBulletinByPeriode(listBulletinDto.getDateDebut(), listBulletinDto.getDateFin());
+			
+			for(BulletinSalaire bulletin : bulletins) {
+				responseListe.add(new ListeBulletinDtoResponse(bulletin.getPeriode(), 
+															   bulletin.getRemunerationEmploye().getMatricule(), 
+															   this.bulletinUtils.getSalaireBrut(bulletin, bulletin.getRemunerationEmploye().getGrade()), 
+															   this.bulletinUtils.getNetImposable(bulletin, bulletin.getRemunerationEmploye().getGrade()),
+															   this.bulletinUtils.getNetAPayer(bulletin,  bulletin.getRemunerationEmploye().getGrade())));
+			}
+			responseListe.forEach(e -> System.out.println("response " + e));
+			//return ResponseEntity.ok(responseListe);
+		}else {
+			
+			
+		}
+	}
+	
+
 	
 	/**
 	 * Créer un bulletinDeSalaire
@@ -50,7 +81,7 @@ public class FactureController {
 	 * @throws Exception
 	 */
 	@PostMapping("/createbulletin")
-	public ResponseEntity<?> creerBulletinSalaire(@RequestBody @Valid FactureDtoRequest factureDtoRequest, BindingResult resValid) throws Exception {
+	public ResponseEntity<?> creerBulletinSalaire(@RequestBody @Valid CreationBulletinDtoRequest factureDtoRequest, BindingResult resValid) throws Exception {
 		if(!resValid.hasErrors()) {
 			Employe employe = this.employeService.findEmployeById(factureDtoRequest.getIdEmploye());
 			Periode periode = this.periodeService.creerPeriode(factureDtoRequest.getDateDebut(), factureDtoRequest.getDateFin());
@@ -63,7 +94,7 @@ public class FactureController {
 			
 			BulletinSalaire bulletin = this.bulletinSalaireService.creerBulletin(periode, primeExceptionnelle, remunerationEmploye);
 			
-			FactureDtoResponse response = new FactureDtoResponse(periode.getDateDebut(), 
+			CreationBulletinDtoResponse response = new CreationBulletinDtoResponse(periode.getDateDebut(), 
 																 periode.getDateFin(), 
 																 employe.getRemunerationEmploye().getMatricule(), 
 																 this.bulletinUtils.getSalaireBrut(bulletin, employe.getRemunerationEmploye().getGrade()), 

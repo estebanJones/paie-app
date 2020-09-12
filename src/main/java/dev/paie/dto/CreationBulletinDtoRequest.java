@@ -3,14 +3,14 @@ package dev.paie.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class FactureDtoRequest {
+public class CreationBulletinDtoRequest {
 	private Integer idEmploye;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 	BigDecimal primeExceptionnelle;
 	
 	
-	public FactureDtoRequest(Integer idEmploye, LocalDate dateDebut, LocalDate dateFin, BigDecimal primeExceptionnelle) {
+	public CreationBulletinDtoRequest(Integer idEmploye, LocalDate dateDebut, LocalDate dateFin, BigDecimal primeExceptionnelle) {
 		super();
 		this.idEmploye = idEmploye;
 		this.dateDebut = dateDebut;
