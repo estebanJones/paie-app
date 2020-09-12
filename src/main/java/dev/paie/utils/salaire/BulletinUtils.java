@@ -22,10 +22,13 @@ public class BulletinUtils {
 		List<Cotisation> cotisations = this.cotisationRepository.findByImposableIsFalse();
 		BigDecimal somme = new BigDecimal("0");
 		for(Cotisation c : cotisations) {
+			if (c.getTauxSalarial() == null) {
+				c.setTauxSalarial(new BigDecimal("0"));
+			}
 			somme.add(c.getTauxSalarial().multiply(this.getSalaireBrut(bulletin, grade)));
 		}
 		
-		return this.getNetAPayer(bulletin, grade).subtract(somme);
+		return this.getNetImposable(bulletin, grade).subtract(somme);
 	}
 	
 	public BigDecimal getNetImposable(BulletinSalaire bulletin, Grade grade) {
