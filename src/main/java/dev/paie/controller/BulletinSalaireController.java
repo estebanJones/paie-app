@@ -32,12 +32,14 @@ import dev.paie.service.PeriodeService;
 import dev.paie.service.RemunerationEmployeService;
 import dev.paie.utils.salaire.BulletinUtils;
 
-/*
+/**
  * 
+ * @author Jordan
+ *
  */
 @RestController
 @RequestMapping("/paieapp")
-public class FactureController {
+public class BulletinSalaireController {
 	@Autowired
 	private BulletinSalaireService bulletinSalaireService;
 	@Autowired
@@ -48,29 +50,6 @@ public class FactureController {
 	private EmployeService employeService;
 	@Autowired
 	BulletinUtils bulletinUtils;
-
-	
-	@PostMapping("/listebulletins")
-	public void listerBulletinSalaire(@RequestBody @Valid ListeBulletinsDtoRequest listBulletinDto, BindingResult resValid) throws EntiteIntrouvableException {
-		if(!resValid.hasErrors()) {
-			List<ListeBulletinDtoResponse> responseListe = new ArrayList<>();
-			List<BulletinSalaire> bulletins = this.bulletinSalaireService.findBulletinByPeriode(listBulletinDto.getDateDebut(), listBulletinDto.getDateFin());
-			
-			for(BulletinSalaire bulletin : bulletins) {
-				responseListe.add(new ListeBulletinDtoResponse(bulletin.getPeriode(), 
-															   bulletin.getRemunerationEmploye().getMatricule(), 
-															   this.bulletinUtils.getSalaireBrut(bulletin, bulletin.getRemunerationEmploye().getGrade()), 
-															   this.bulletinUtils.getNetImposable(bulletin, bulletin.getRemunerationEmploye().getGrade()),
-															   this.bulletinUtils.getNetAPayer(bulletin,  bulletin.getRemunerationEmploye().getGrade())));
-			}
-			responseListe.forEach(e -> System.out.println("response " + e));
-			//return ResponseEntity.ok(responseListe);
-		}else {
-			
-			
-		}
-	}
-	
 
 	
 	/**
@@ -105,6 +84,27 @@ public class FactureController {
 			
 		} else {
 			return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).body("Tout les champs de thé sont obligatoires");
+		}
+	}
+	
+	@PostMapping("/listebulletins")
+	public ResponseEntity<?> listerBulletinSalaire(@RequestBody @Valid ListeBulletinsDtoRequest listBulletinDto, BindingResult resValid) throws EntiteIntrouvableException {
+		if(!resValid.hasErrors()) {
+			List<ListeBulletinDtoResponse> responseListe = new ArrayList<>();
+			List<BulletinSalaire> bulletins = this.bulletinSalaireService.findBulletinByPeriode(listBulletinDto.getDateDebut(), listBulletinDto.getDateFin());
+			
+			for(BulletinSalaire bulletin : bulletins) {
+				responseListe.add(new ListeBulletinDtoResponse(bulletin.getPeriode(), 
+						bulletin.getRemunerationEmploye().getMatricule(), 
+						this.bulletinUtils.getSalaireBrut(bulletin, bulletin.getRemunerationEmploye().getGrade()), 
+						this.bulletinUtils.getNetImposable(bulletin, bulletin.getRemunerationEmploye().getGrade()),
+						this.bulletinUtils.getNetAPayer(bulletin,  bulletin.getRemunerationEmploye().getGrade())));
+			}
+			responseListe.forEach(e -> System.out.println("response " + e));
+			return ResponseEntity.ok(responseListe);
+		}else {
+			
+			return ResponseEntity.badRequest().body("Probleme survenu");
 		}
 	}
 }
