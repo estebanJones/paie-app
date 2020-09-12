@@ -6,6 +6,11 @@ import javax.persistence.Table;
 
 import dev.paie.entite.base.BaseEntite;
 
+/**
+ * 
+ * @author Jordan
+ *
+ */
 @Entity
 @Table(name="employe")
 public class Employe extends BaseEntite  {

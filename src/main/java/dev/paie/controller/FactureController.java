@@ -25,6 +25,9 @@ import dev.paie.service.PeriodeService;
 import dev.paie.service.RemunerationEmployeService;
 import dev.paie.utils.salaire.BulletinUtils;
 
+/*
+ * 
+ */
 @RestController
 @RequestMapping("/paieapp")
 public class FactureController {
@@ -39,7 +42,13 @@ public class FactureController {
 	@Autowired
 	BulletinUtils bulletinUtils;
 	
-	
+	/**
+	 * Créer un bulletinDeSalaire
+	 * @param factureDtoRequest
+	 * @param resValid
+	 * @return
+	 * @throws Exception
+	 */
 	@PostMapping("/createbulletin")
 	public ResponseEntity<?> creerBulletinSalaire(@RequestBody @Valid FactureDtoRequest factureDtoRequest, BindingResult resValid) throws Exception {
 		if(!resValid.hasErrors()) {

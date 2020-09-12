@@ -10,6 +10,11 @@ import javax.persistence.Table;
 
 import dev.paie.entite.base.BaseEntite;
 
+/**
+ * 
+ * @author Jordan
+ *
+ */
 @Entity
 @Table(name="grade")
 public class Grade extends BaseEntite{

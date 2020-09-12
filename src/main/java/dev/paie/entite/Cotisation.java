@@ -11,6 +11,11 @@ import javax.persistence.Table;
 
 import dev.paie.entite.base.BaseEntite;
 
+/**
+ * 
+ * @author Jordan
+ *
+ */
 @Entity
 @Table(name="cotisation")
 public class Cotisation extends BaseEntite{

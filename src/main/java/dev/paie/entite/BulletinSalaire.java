@@ -9,6 +9,11 @@ import javax.persistence.Table;
 
 import dev.paie.entite.base.BaseEntite;
 
+/**
+ * 
+ * @author Jordan
+ *
+ */
 @Entity
 @Table(name="bulletin_salaire")
 public class BulletinSalaire extends BaseEntite {

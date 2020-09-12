@@ -19,17 +19,36 @@ public class EmployeService {
 	@Autowired
 	RemunerationEmployeService remunerationEmployeService;
 	
+	/**
+	 * Persist un employé en BDD
+	 * @param e
+	 * @return
+	 */
 	@Transactional
 	public Employe persistEmploye(Employe e) {
 		return this.employeRepository.save(e);
 	}
 	
+	/**
+	 * Retourne un objet Employé
+	 * @param matricule
+	 * @param idEntreprise
+	 * @param idProfil
+	 * @param idGrade
+	 * @return
+	 */
 	public Employe creerEmploye(String matricule, Integer idEntreprise, Integer idProfil, Integer idGrade) {
 		RemunerationEmploye remuneration = this.remunerationEmployeService.creerRemunerationEmploye(idEntreprise, idProfil, idGrade);
 		remuneration.setMatricule(matricule);
 		return new Employe(remuneration);
 	}
-		
+	
+	/**
+	 * Cherche un employe dans la bdd
+	 * @param idEmploye
+	 * @return
+	 * @throws Exception
+	 */
 	public Employe findEmployeById(Integer idEmploye) throws Exception {
 		Optional<Employe> employe = this.employeRepository.findById(idEmploye);
 		if(employe.isPresent()) {

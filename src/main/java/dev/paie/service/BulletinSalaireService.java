@@ -19,7 +19,13 @@ public class BulletinSalaireService {
 	BulletinSalaireRepository bulletinRepository;
 	
 	
-
+	/**
+	 * Persist un Bulletin en BDD
+	 * @param periode
+	 * @param primeExceptionnelle
+	 * @param remunerationEmploye
+	 * @return
+	 */
 	@Transactional
 	public BulletinSalaire creerBulletin(Periode periode, BigDecimal primeExceptionnelle, 
 							  RemunerationEmploye remunerationEmploye) {

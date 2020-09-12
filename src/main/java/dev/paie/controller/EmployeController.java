@@ -14,13 +14,23 @@ import dev.paie.dto.EmployeDto;
 import dev.paie.entite.Employe;
 import dev.paie.service.EmployeService;
 
-
+/**
+ * 
+ * @author Jordan
+ *
+ */
 @RestController
 @RequestMapping("/paieapp")
 public class EmployeController {
 	@Autowired
 	EmployeService employeService;
 	
+	/**
+	 * Insert un employé
+	 * @param employeDto
+	 * @param resValid
+	 * @return
+	 */
 	@PostMapping("/insertemploye")
 	public ResponseEntity<?> insert(@RequestBody @Valid EmployeDto employeDto, BindingResult resValid) {
 		if(!resValid.hasErrors()) {

@@ -20,6 +20,13 @@ public class RemunerationEmployeService {
 	
 	
 	
+	/**
+	 * Créer un objet RemunerationEmploye
+	 * @param idEntreprise
+	 * @param idProfil
+	 * @param idGrade
+	 * @return
+	 */
 	public RemunerationEmploye creerRemunerationEmploye(Integer idEntreprise, Integer idProfil, Integer idGrade) {
 		RemunerationEmploye remunerationEmploye = null;
 		
