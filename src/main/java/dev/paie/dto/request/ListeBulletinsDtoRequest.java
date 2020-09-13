@@ -1,4 +1,4 @@
-package dev.paie.dto;
+package dev.paie.dto.request;
 
 import java.time.LocalDate;
 

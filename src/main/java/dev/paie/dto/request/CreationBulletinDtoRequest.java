@@ -1,4 +1,4 @@
-package dev.paie.dto;
+package dev.paie.dto.request;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

@@ -1,23 +1,23 @@
-package dev.paie.dto;
+package dev.paie.dto.response;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import dev.paie.entite.Periode;
-
-public class ListeBulletinDtoResponse {
-	private final static LocalDateTime dateCreation = LocalDateTime.now();
-	private Periode periode;
+public class CreationBulletinDtoResponse {
+	private static final LocalDateTime dateCreation = LocalDateTime.now();
+	private LocalDate dateDebut;
+	private LocalDate dateFin;
 	private String matricule;
 	private BigDecimal salaireBrut;
 	private BigDecimal netImposable;
 	private BigDecimal netAPayer;
 	
-	public ListeBulletinDtoResponse(Periode periode, String matricule, BigDecimal salaireBrut,
-			BigDecimal netImposable, BigDecimal netAPayer) {
+	public CreationBulletinDtoResponse(LocalDate dateDebut, LocalDate dateFin, String matricule,
+			BigDecimal salaireBrut, BigDecimal netImposable, BigDecimal netAPayer) {
 		super();
-		this.periode = periode;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
 		this.matricule = matricule;
 		this.salaireBrut = salaireBrut;
 		this.netImposable = netImposable;
@@ -28,12 +28,20 @@ public class ListeBulletinDtoResponse {
 		return dateCreation;
 	}
 
-	public Periode getPeriode() {
-		return periode;
+	public LocalDate getDateDebut() {
+		return dateDebut;
 	}
 
-	public void setPeriode(Periode periode) {
-		this.periode = periode;
+	public void setDateDebut(LocalDate dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+
+	public LocalDate getDateFin() {
+		return dateFin;
+	}
+
+	public void setDateFin(LocalDate dateFin) {
+		this.dateFin = dateFin;
 	}
 
 	public String getMatricule() {
@@ -67,12 +75,4 @@ public class ListeBulletinDtoResponse {
 	public void setNetAPayer(BigDecimal netAPayer) {
 		this.netAPayer = netAPayer;
 	}
-
-	@Override
-	public String toString() {
-		return "ListeBulletinDtoResponse [periode=" + periode + ", matricule=" + matricule + ", salaireBrut="
-				+ salaireBrut + ", netImposable=" + netImposable + ", netAPayer=" + netAPayer + "]";
-	}
-	
-	
 }

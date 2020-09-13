@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.paie.dto.CreationBulletinDtoRequest;
-import dev.paie.dto.CreationBulletinDtoResponse;
-import dev.paie.dto.ListeBulletinDtoResponse;
-import dev.paie.dto.ListeBulletinsDtoRequest;
+import dev.paie.dto.request.CreationBulletinDtoRequest;
+import dev.paie.dto.request.ListeBulletinsDtoRequest;
+import dev.paie.dto.response.CreationBulletinDtoResponse;
+import dev.paie.dto.response.ListeBulletinDtoResponse;
 import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Employe;
 import dev.paie.entite.Periode;
