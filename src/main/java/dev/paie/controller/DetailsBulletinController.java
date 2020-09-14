@@ -1,21 +1,17 @@
 package dev.paie.controller;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.paie.dto.request.DetailsBulletinDtoRequest;
 import dev.paie.dto.response.CotisationDtoResponse;
 import dev.paie.dto.response.DetailsBulletinDtoResponse;
 import dev.paie.entite.BulletinSalaire;
@@ -38,12 +34,15 @@ public class DetailsBulletinController {
 			List<Cotisation> cotisations = bulletin.getRemunerationEmploye().getProfilRemuneration().getCotisations();
 			
 			BigDecimal base = this.bulletinUtils.getSalaireBrut(bulletin, bulletin.getRemunerationEmploye().getGrade());
+			
 			for(Cotisation coti : cotisations) {
 				if(coti.getTauxSalarial() == null) {
 					coti.setTauxSalarial(new BigDecimal("0"));
+				} else if(coti.getTauxPatronal() == null) {
+					coti.setTauxPatronal(new BigDecimal("0"));
 				}
 			}
-			cotisations.forEach(e -> System.out.println("taux " + e.getTauxSalarial()));
+			
 			List<CotisationDtoResponse> cotisationResponse = 
 					cotisations.stream()
 							   .map(cotisation -> new CotisationDtoResponse(cotisation, 
