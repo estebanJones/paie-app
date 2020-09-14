@@ -102,7 +102,7 @@ public class BulletinSalaireController {
 						this.bulletinUtils.getNetImposable(bulletin, bulletin.getRemunerationEmploye().getGrade()),
 						this.bulletinUtils.getNetAPayer(bulletin,  bulletin.getRemunerationEmploye().getGrade())));
 			}
-			responseListe.forEach(e -> System.out.println("response " + e));
+			
 			return ResponseEntity.ok(responseListe);
 		}else {
 			

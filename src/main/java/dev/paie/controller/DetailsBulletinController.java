@@ -36,24 +36,17 @@ public class DetailsBulletinController {
 			
 			BigDecimal base = this.bulletinUtils.getSalaireBrut(bulletin, bulletin.getRemunerationEmploye().getGrade());
 			
-			for(Cotisation coti : cotisations) {
-				if(coti.getTauxSalarial() == null) {
-					coti.setTauxSalarial(new BigDecimal("0"));
-					
-				} else if(coti.getTauxPatronal() == null) {
-					coti.setTauxPatronal(new BigDecimal("0"));
-				}
-			}
-			
 			List<CotisationDtoResponse> cotisationResponse = 
 					cotisations.stream()
+							   .filter(cotisation -> cotisation.getTauxSalarial() != null && cotisation.getTauxPatronal() != null)	
 							   .map(cotisation -> new CotisationDtoResponse(cotisation, 
 																	        base, 
 																	        cotisation.getTauxSalarial().add(this.bulletinUtils.getSalaireBrut(bulletin, bulletin.getRemunerationEmploye().getGrade()))))
+							  
 							   .collect(Collectors.toList());
 			
 			DetailsBulletinDtoResponse response = new DetailsBulletinDtoResponse(bulletin, cotisationResponse);
-			LoggerUtils.getLOG(DetailsBulletinController.class).warn("IL MARCHE");
+
 			return ResponseEntity.ok(response);
 	}
 }

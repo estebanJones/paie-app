@@ -71,6 +71,14 @@ public class CotisationDtoResponse {
 	public void setCotePatronales(BigDecimal cotePatronales) {
 		this.cotePatronales = cotePatronales;
 	}
+
+	@Override
+	public String toString() {
+		return "CotisationDtoResponse [rubrique=" + rubrique + ", baseCotisation=" + baseCotisation
+				+ ", tauxSalarialCotisation=" + tauxSalarialCotisation + ", montantSalarialCotisation="
+				+ montantSalarialCotisation + ", tauxPatronCotisation=" + tauxPatronCotisation + ", cotePatronales="
+				+ cotePatronales + "]";
+	}
 	
 	
 }
