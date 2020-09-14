@@ -2,7 +2,10 @@ package dev.paie.dto.response;
 
 import java.math.BigDecimal;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import dev.paie.entite.Cotisation;
+import dev.paie.utils.salaire.BulletinUtils;
 
 public class CotisationDtoResponse {
 	private String rubrique;
@@ -12,11 +15,11 @@ public class CotisationDtoResponse {
 	private BigDecimal tauxPatronCotisation;
 	private BigDecimal cotePatronales;
 	
-	public CotisationDtoResponse(Cotisation cotisation) {
+	public CotisationDtoResponse(Cotisation cotisation, BigDecimal base, BigDecimal montantSalarial) {
 		this.rubrique = cotisation.getLibelle();
-		this.baseCotisation = cotisation.getTauxSalarial(); // quelle propriété
+		this.baseCotisation = base; // quelle propriété
 		this.tauxSalarialCotisation = cotisation.getTauxSalarial();
-		this.montantSalarialCotisation = cotisation.getTauxSalarial(); // quelle propriété
+		this.montantSalarialCotisation = montantSalarial; // quelle propriété
 		this.tauxPatronCotisation = cotisation.getTauxPatronal();
 		this.cotePatronales = cotisation.getTauxPatronal().subtract(cotisation.getTauxSalarial());
 	}

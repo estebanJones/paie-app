@@ -95,5 +95,12 @@ public class DetailsBulletinDtoResponse {
 		this.cotisations = cotisations;
 	}
 
+	@Override
+	public String toString() {
+		return "DetailsBulletinDtoResponse [entrepriseName=" + entrepriseName + ", siret=" + siret + ", dateDebut="
+				+ dateDebut + ", dateFin=" + dateFin + ", matricule=" + matricule + ", baseGrade=" + baseGrade
+				+ ", tauxSalarialGrade=" + tauxSalarialGrade + ", cotisations=" + cotisations + "]";
+	}
+
 	
 }

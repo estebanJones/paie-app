@@ -72,6 +72,7 @@ public class BulletinUtils {
 	 * @return
 	 */
 	public BigDecimal getSalaireBrut(BulletinSalaire bulletin, Grade grade) {
+		System.out.println(bulletin.getPrimeExceptionnelle() + " " + this.getSalaireBase(grade));
 		return bulletin.getPrimeExceptionnelle().add(this.getSalaireBase(grade));
 	}
 	
