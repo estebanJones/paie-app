@@ -30,6 +30,7 @@ import dev.paie.service.BulletinSalaireService;
 import dev.paie.service.EmployeService;
 import dev.paie.service.PeriodeService;
 import dev.paie.service.RemunerationEmployeService;
+import dev.paie.utils.logger.LoggerUtils;
 import dev.paie.utils.salaire.BulletinUtils;
 
 /**
@@ -62,6 +63,7 @@ public class BulletinSalaireController {
 	@PostMapping("/createbulletin")
 	public ResponseEntity<?> creerBulletinSalaire(@RequestBody @Valid CreationBulletinDtoRequest factureDtoRequest, BindingResult resValid) throws Exception {
 		if(!resValid.hasErrors()) {
+			
 			Employe employe = this.employeService.findEmployeById(factureDtoRequest.getIdEmploye());
 			Periode periode = this.periodeService.creerPeriode(factureDtoRequest.getDateDebut(), factureDtoRequest.getDateFin());
 			BigDecimal primeExceptionnelle = factureDtoRequest.getPrimeExceptionnelle();

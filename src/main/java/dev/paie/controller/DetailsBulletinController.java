@@ -18,6 +18,7 @@ import dev.paie.entite.BulletinSalaire;
 import dev.paie.entite.Cotisation;
 import dev.paie.exception.EntiteIntrouvableException;
 import dev.paie.service.BulletinSalaireService;
+import dev.paie.utils.logger.LoggerUtils;
 import dev.paie.utils.salaire.BulletinUtils;
 
 @RestController
@@ -38,6 +39,7 @@ public class DetailsBulletinController {
 			for(Cotisation coti : cotisations) {
 				if(coti.getTauxSalarial() == null) {
 					coti.setTauxSalarial(new BigDecimal("0"));
+					
 				} else if(coti.getTauxPatronal() == null) {
 					coti.setTauxPatronal(new BigDecimal("0"));
 				}
@@ -51,7 +53,7 @@ public class DetailsBulletinController {
 							   .collect(Collectors.toList());
 			
 			DetailsBulletinDtoResponse response = new DetailsBulletinDtoResponse(bulletin, cotisationResponse);
-			
+			LoggerUtils.getLOG(DetailsBulletinController.class).warn("IL MARCHE");
 			return ResponseEntity.ok(response);
 	}
 }
